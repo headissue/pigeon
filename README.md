@@ -64,7 +64,7 @@ Include this Javascript snippet right before `</body>`:
 
 ### Be The First To Complete A Survey
 
-Now you can browse to your page. The survey should be the last thing which is rendered on the so you may have to be patient. Answer some questions (at least one) and verify that the answer has been processed correctly by going to `http://localhost:8080/feedback/admin/survey/1/export/csv` and downloading the survey as CSV file.
+Now you can browse to your page. The survey should be the last thing which is rendered on the page so you may have to be patient. Answer some questions (at least one) and verify that the answer has been processed correctly by going to `http://localhost:8080/feedback/admin/survey/1/export/csv` and downloading the survey as CSV file.
 
 ### Create Your Own Survey
 
