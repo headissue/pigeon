@@ -1,0 +1,11 @@
+{
+  "name": "Test Survey",
+  "questions": [
+    {
+      "title": "test",
+      "text": "Question 1",
+      "type": "bool",
+      "answers":["Answer 1", "Answer 2", "Answer 3", "Answer 4"]
+    }
+  ]
+}

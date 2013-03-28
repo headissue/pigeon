@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (C) 2013 headissue GmbH (www.headissue.com)
+  ~
+  ~ Source repository: https://github.com/headissue/pigeon
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as
+  ~ published by the Free Software Foundation, either version 3 of the
+  ~ License, or (at your option) any later version.
+  ~
+  ~ This patch is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this patch.  If not, see <http://www.gnu.org/licenses/agpl.txt/>.
+  -->
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+  <persistence-unit name="pigeon-webapp" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.headissue.pigeon.survey.Survey</class>
+    <class>com.headissue.pigeon.survey.Question</class>
+    <class>com.headissue.pigeon.survey.QuestionText</class>
+    <class>com.headissue.pigeon.survey.answer.Answer</class>
+    <class>com.headissue.pigeon.survey.answer.UserMap</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+      <!--
+        url, user and password will be loaded/overwrited from the PersistenceConfig class
+      -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/pigeon" />
+      <!--
+        Note: DeveloperSetup uses System.getProperty("user.name") here
+        <property name="javax.persistence.jdbc.user" value="sarah" />
+        <property name="javax.persistence.jdbc.password" value="xy" />
+      -->
+
+      <property name="eclipselink.target-database"
+                value="org.eclipse.persistence.platform.database.PostgreSQLPlatform"/>
+      <!--
+        http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging
+
+        LogLevel: OFF, SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST, ALL
+      -->
+      <property name="eclipselink.logging.level" value="CONFIG"/>
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <property name="eclipselink.logging.session" value="true"/>
+
+      <property name="eclipselink.orm.throw.exceptions" value="true"/>
+      <!--
+        More Information: http://wiki.eclipse.org/EclipseLink/Examples/JPA/DDL
+      -->
+      <!--
+        <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+      -->
+      <property name="eclipselink.ddl-generation.output-mode" value="database" />
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="pigeon-demo">
+    <!-- for unit tests ... -->
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.headissue.pigeon.survey.Survey</class>
+    <class>com.headissue.pigeon.survey.Question</class>
+    <class>com.headissue.pigeon.survey.QuestionText</class>
+    <class>com.headissue.pigeon.survey.answer.Answer</class>
+    <class>com.headissue.pigeon.survey.answer.UserMap</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:test;sql.syntax_mys=true"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+
+      <property name="eclipselink.target-database"
+                value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+      <!--
+        http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging
+
+        LogLevel: OFF, SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST, ALL
+      -->
+      <property name="eclipselink.logging.level" value="SEVERE"/>
+      <property name="eclipselink.logging.level.sql" value="CONFIG"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <property name="eclipselink.logging.session" value="true"/>
+
+      <property name="eclipselink.orm.throw.exceptions" value="true"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+      <property name="eclipselink.ddl-generation.output-mode" value="database" />
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="pigeon-test" transaction-type="RESOURCE_LOCAL">
+    <!-- for unit tests ... -->
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.headissue.pigeon.survey.Survey</class>
+    <class>com.headissue.pigeon.survey.Question</class>
+    <class>com.headissue.pigeon.survey.QuestionText</class>
+    <class>com.headissue.pigeon.survey.answer.Answer</class>
+    <class>com.headissue.pigeon.survey.answer.UserMap</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:test;sql.syntax_mys=true"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+
+      <property name="eclipselink.target-database"
+                value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+      <!--
+        http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging
+
+        LogLevel: OFF, SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST, ALL
+      -->
+      <property name="eclipselink.logging.level" value="SEVERE"/>
+      <property name="eclipselink.logging.level.sql" value="CONFIG"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <property name="eclipselink.logging.session" value="true"/>
+
+      <property name="eclipselink.orm.throw.exceptions" value="true"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+      <property name="eclipselink.ddl-generation.output-mode" value="database" />
+    </properties>
+  </persistence-unit>
+</persistence>

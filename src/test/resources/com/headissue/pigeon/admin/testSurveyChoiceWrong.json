@@ -1,0 +1,11 @@
+{
+  "name": "Test Survey",
+  "questions": [
+    {
+      "title": "test",
+      "text": "Question 4",
+      "type": "choice",
+      "answers": ["A"]
+    }
+  ]
+}

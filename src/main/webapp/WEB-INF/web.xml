@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2013 headissue GmbH (www.headissue.com)
+  ~
+  ~ Source repository: https://github.com/headissue/pigeon
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as
+  ~ published by the Free Software Foundation, either version 3 of the
+  ~ License, or (at your option) any later version.
+  ~
+  ~ This patch is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this patch.  If not, see <http://www.gnu.org/licenses/agpl.txt/>.
+  -->
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <display-name>headissue pigeon feedback</display-name>
+
+
+<!--
+  <context-param>
+    <description>load this guice module</description>
+    <param-name>com.headissue.pigeon.guice.Module</param-name>
+    <param-value>com.headissue.pigeon.setup.DeveloperSetup</param-value>
+  </context-param>
+-->
+
+  <listener>
+    <listener-class>com.headissue.pigeon.PigeonBootstrapListener</listener-class>
+  </listener>
+
+  <!-- Guice -->
+  <filter>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- SECURITY ROLES -->
+  <security-role>
+    <role-name>pideon-admin</role-name>
+  </security-role>
+
+  <!-- SECURITY CONSTRAINTS -->
+  <!--
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Admin</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>pideaon-admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  -->
+
+  <!-- LOGIN AUTHENTICATION -->
+  <!--
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>headissue Pigeon Feedback Admin Area</realm-name>
+  </login-config>
+  -->
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

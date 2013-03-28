@@ -1,0 +1,14 @@
+{
+  "name" : "Testumfrage",
+  "questions" : [ {
+    "title" : "Default",
+    "text" : "Choose Frage",
+    "type" : "choice",
+    "answers" : [ "A", "B", "C", "D" ]
+  }, {
+    "title" : "Default",
+    "text" : "Multiple Frage",
+    "type" : "multiple",
+    "answers" : [ "1", "2", "3"]
+  } ]
+}

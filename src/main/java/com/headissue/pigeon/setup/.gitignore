@@ -1,0 +1,7 @@
+#
+# ignore custom developer setups
+#
+
+*Setup.java
+!DemoSetup.java
+!DeveloperSetup.java

@@ -1,0 +1,16 @@
+{
+  "answers": [
+    {
+      "question_id": 12,
+      "values": ["34"]
+    },
+    {
+      "question_id": 14,
+      "values": ["Mehr sport oder sowas"]
+    },
+    {
+      "question_id": 35,
+      "values": ["44", "23", "15"]
+    }
+  ]
+}

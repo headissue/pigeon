@@ -1,0 +1,180 @@
+/*
+ * Copyright (C) 2013 headissue GmbH (www.headissue.com)
+ *
+ * Source repository: https://github.com/headissue/pigeon
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This patch is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this patch.  If not, see <http://www.gnu.org/licenses/agpl.txt/>.
+ */
+html {margin:0;}
+body {
+    margin:0 auto;
+    background: #fff; width: 930px; padding: 15px; font-family: sans-serif;
+}
+
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+h1 {margin:0 0 20px 0;}
+h1.clickable {
+    cursor: pointer;
+}
+h1.clickable:hover:after {
+    display: inline-block;
+    content: 'home';
+    font-weight: normal;
+    font-variant: small-caps;
+    color: #fff;
+    background: #aaa;
+    border-radius: 2px;
+    margin-left: 10px;
+    font-size: 0.5em;
+    padding: 0 4px 3px;
+    line-height: 0.8em;
+}
+
+#survey-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 500px;
+}
+#survey-list li {
+    position: relative;
+    margin-bottom: 15px;
+}
+#survey-list h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1em;
+}
+#survey-list .meta {
+    font-size: small;
+    margin-top: 0;
+    color: #aaa;
+}
+#survey-list .actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #ccc;
+}
+
+.wrapper .page {
+    display: none;
+}
+
+.wrapper .page.current {
+    display: block;
+}
+
+
+.survey-json-textarea {
+    height: 350px;
+}
+
+
+button, .btn {
+    position: relative;
+    padding: 4px 12px;
+    margin: 0;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 0 1px 0 #fff;
+    color: #333;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: #f3f3f3;
+    background-image: -moz-linear-gradient(top, #f5f5f5, #f1f1f1);
+    background-image: -ms-linear-gradient(top, #f5f5f5, #f1f1f1);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f1f1f1));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+    background-image: -o-linear-gradient(top, #f5f5f5, #f1f1f1);
+    background-image: linear-gradient(top, #f5f5f5, #f1f1f1);
+    background-repeat: repeat-x;
+    -webkit-background-clip: padding;
+    -moz-background-clip: padding;
+    background-clip: padding;
+    border: 1px solid #dcdcdc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+button:hover, .btn:hover {
+    color: #333;
+    text-shadow: none;
+    border-color: #c6c6c6;
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #f8f8f8, #f1f1f1);
+    background-image: -ms-linear-gradient(top, #f8f8f8, #f1f1f1);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f8f8f8), to(#f1f1f1));
+    background-image: -webkit-linear-gradient(top, #f8f8f8, #f1f1f1);
+    background-image: -o-linear-gradient(top, #f8f8f8, #f1f1f1);
+    background-image: linear-gradient(top, #f8f8f8, #f1f1f1);
+    background-repeat: repeat-x;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+textarea {
+    width: 100%;
+    padding: 4px 8px;
+    margin-bottom: 9px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+textarea:hover {
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+textarea:focus {
+    outline: none;
+    border: 1px solid #ff9933;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}

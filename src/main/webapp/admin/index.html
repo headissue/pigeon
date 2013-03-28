@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<!--
+  ~ Copyright (C) 2013 headissue GmbH (www.headissue.com)
+  ~
+  ~ Source repository: https://github.com/headissue/pigeon
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as
+  ~ published by the Free Software Foundation, either version 3 of the
+  ~ License, or (at your option) any later version.
+  ~
+  ~ This patch is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this patch.  If not, see <http://www.gnu.org/licenses/agpl.txt/>.
+  -->
+<html>
+<head>
+    <title>pigeon Administration</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/admin.css" />
+    <script src="../js/zepto.min.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/jsonformatter.js"></script>
+    <script>
+        var BASE_URL = location.pathname.replace("/admin", "").replace(/\/$/, '');
+    </script>
+</head>
+<body>
+    <header>
+        <h1>pigeon Administration</h1>
+    </header>
+    <div class="wrapper">
+        <div class="page" id="survey-overview">
+            <h3>All Surveys</h3>
+            <ul id="survey-list"></ul>
+            <script id="survey-list-template" type="text/x-handlebars-template">
+                <li data-survey-id="{{id}}">
+                    <h3>{{name}}</h3>
+                    <p class="meta">ID: <code>{{id}}</code></p>
+                    <div class="actions">
+                        Export as: <a href="../api/admin/survey/{{id}}/export/csv">CSV</a>
+                        &mdash;
+                        <button name="edit">Edit</button>
+                        <button name="delete">Delete</button>
+                    </div>
+                </li>
+            </script>
+            <button name="create" id="create-survey-button">+ Add Survey</button>
+        </div>
+        <div class="page" id="survey-new">
+            <h3>Create a new survey</h3>
+            <form id="new-survey-form">
+                <h4>Expert Mode - Insert Survey as <code>JSON</code> here:</h4>
+                <textarea class="survey-json-textarea"></textarea>
+                <button id="insert-template-button" class="pull-right">Insert Template</button>
+                <button id="submit-new-survey-button" type="submit">Create</button>
+            </form>
+        </div>
+        <div class="page" id="survey-edit">
+            <script id="survey-edit-template" type="text/x-handlebars-template">
+                <h3>Edit Survey #{{id}}</h3>
+                <form id="edit-survey-form" data-survey-id='{{id}}'>
+                    <h4>Expert Mode - Edit Survey as <code>JSON</code> here:</h4>
+                    <textarea class="survey-json-textarea">{{json}}</textarea>
+                    <button id="submit-edit-survey-button" type="submit">Save</button>
+                </form>
+            </script>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>

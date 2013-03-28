@@ -1,0 +1,9 @@
+{
+  "name" : "Blabla Umfrage",
+  "questions" : [ {
+    "title" : "Default",
+    "text" : "Choose Frage",
+    "type" : "CHOICE",
+    "answers" : [ "A", "B", "C", "D" ]
+  } ]
+}

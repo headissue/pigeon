@@ -1,0 +1,31 @@
+{
+  "name": "Test Survey",
+  "questions": [
+    {
+      "title": "test",
+      "text": "Question 1",
+      "type": "choice",
+      "answers":["Answer 1", "Answer 2", "Answer 3", "Answer 4"]
+    }, {
+      "title": "test",
+      "text": "Question 2",
+      "type": "bool",
+      "answers": ["Ja", "Nein"]
+    }, {
+      "title": "test",
+      "text": "Question 4",
+      "type": "free",
+      "answers": []
+    }, {
+      "title": "test",
+      "text": "Question 4",
+      "type": "multiple",
+      "answers": ["A", "b", "C", "D", "E", "F"]
+    }, {
+      "title": "test",
+      "text": "Question 5",
+      "type": "bool",
+      "answers": ["Toll", "Schlecht"]
+    }
+  ]
+}
