@@ -95,13 +95,7 @@
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>1.8.0.10</version>
-      <!--
-        We need the library in demo modus. If you want run in a real application servcer, you must
-        uncomment the line below.
-      -->
-      <!--
-      <scope>test</test>
-      -->
+      <scope>test</scope>
     </dependency>
     <!-- -->
     <dependency>
@@ -194,4 +188,16 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>demo-mode</id>
+      <dependencies>
+        <dependency>
+          <groupId>hsqldb</groupId>
+          <artifactId>hsqldb</artifactId>
+          <version>1.8.0.10</version>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 </project>

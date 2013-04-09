@@ -27,7 +27,7 @@ Clone this repository
 Start it with:
 
     cd pigeon
-    mvn tomcat7:run
+    mvn tomcat7:run -P demo-mode
 
 **Please Note**: For quick setup purposes we use an in-memory-database here. If you shut down tomcat your survey data will be gone.
 For using pigeon in production see [Server Setup](#server-setup).
