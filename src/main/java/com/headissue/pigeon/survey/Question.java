@@ -73,7 +73,7 @@ public class Question {
   private List<QuestionText> answers = new ArrayList<QuestionText>();
 
   @ManyToOne(cascade = {CascadeType.ALL})
-  @JoinColumn(name = "survery_id", nullable = false)
+  @JoinColumn(name = "survey_id", nullable = false)
   @XmlTransient
   private Survey survey;
 

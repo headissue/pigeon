@@ -29,7 +29,7 @@ CREATE TABLE pigeon_question (
 	text VARCHAR,
 	title VARCHAR,
 	type VARCHAR(20),
-	survery_id INTEGER NOT NULL,
+	survey_id INTEGER NOT NULL,
 	PRIMARY KEY (question_id));
 CREATE TABLE pigeon_question_text (
 	answer_id INTEGER NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE pigeon_answer_value (
 
 CREATE SEQUENCE pigeon_sequence INCREMENT BY 50 START WITH 500000;
 
-ALTER TABLE pigeon_question ADD CONSTRAINT FK_pigeon_question_survery_id FOREIGN KEY (survery_id) REFERENCES pigeon_survey (survey_id);
+ALTER TABLE pigeon_question ADD CONSTRAINT FK_pigeon_question_survey_id FOREIGN KEY (survey_id) REFERENCES pigeon_survey (survey_id);
 ALTER TABLE pigeon_question_text ADD CONSTRAINT FK_pigeon_question_text_question_id FOREIGN KEY (question_id) REFERENCES pigeon_question (question_id);
 ALTER TABLE pigeon_answer ADD CONSTRAINT FK_pigeon_answer_survey_id FOREIGN KEY (survey_id) REFERENCES pigeon_survey (survey_id);
 ALTER TABLE pigeon_answer ADD CONSTRAINT FK_pigeon_answer_map_id FOREIGN KEY (map_id) REFERENCES pigeon_answer_user_map (map_id);
