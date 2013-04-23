@@ -461,7 +461,7 @@ class PigeonMultipleFreeQuestion extends PigeonQuestion
     id = el.id
     checkboxEl = document.getElementById(id.replace(/-free$/, ''))
     if checkboxEl?
-      checkboxEl["checked"] = (el.value != "")
+      checkboxEl["checked"] = (event.type == "focus" || el.value != "")
 
   bind: (el) ->
     Gator(el).on 'focus', '.pigeon-answers-free input', @checkedValue

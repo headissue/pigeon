@@ -596,7 +596,7 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
       id = el.id;
       checkboxEl = document.getElementById(id.replace(/-free$/, ''));
       if (checkboxEl != null) {
-        return checkboxEl["checked"] = el.value !== "";
+        return checkboxEl["checked"] = event.type === "focus" || el.value !== "";
       }
     };
 
