@@ -196,6 +196,7 @@ public class AdminSurveyHandler {
 
   static {
     defaultSurvey.setName("Default Survey");
+    defaultSurvey.setKey("test");
     QuestionValue q1 = new QuestionValue();
     q1.setTitle("Default");
     q1.setText("Yes / No Question");

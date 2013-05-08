@@ -31,6 +31,8 @@ public class SurveyValue {
 
   private String name;
 
+  private String key;
+
   private List<QuestionValue> questions;
 
   public SurveyValue() {
@@ -42,6 +44,14 @@ public class SurveyValue {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getKey() {
+    return key;
+  }
+
+  public void setKey(String key) {
+    this.key = key;
   }
 
   public List<QuestionValue> getQuestions() {

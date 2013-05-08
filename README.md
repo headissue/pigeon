@@ -42,7 +42,7 @@ Make sure that you have [jQuery](http://jquery.org) or a jQuery-compatible libra
 
 Then include this survey-div at the position you want to have the survey rendered:
 
-    <div class="pigeon" data-pigeon-surveyid="1"></div>
+    <div class="pigeon" data-pigeon-surveyid="key or id"></div>
 
 Include this Javascript snippet right before `</body>`:
 
@@ -144,14 +144,14 @@ To embed a survey, you have to add two snippets into the body of your webpage.
 This snippet defines which survey is rendered and which additional information will be sent.
 
     <div class='pigeon'
-        data-pigeon-surveyid='1'
+        data-pigeon-surveyid='key or id'
         data-pigeon-pagekey='unique for every location'
         data-pigeon-userkey='randomly generated key'
         data-pigeon-userdata='{"a-b-test-key":"b"}'>
     </div>
 
   * `class='pigeon'`: [Required] Pigeons autoloading (See [Javascript](#javascript-snippet)) is searching for elements with this class.
-  * `data-pigeon-surveyid`: [Required] the unique survey id. You can find this in the Administration.
+  * `data-pigeon-surveyid`: [Required] the unique survey id or the key of survey. You can find this in the Administration.
   * `data-pigeon-pagekey`: [Optional] This information will always be sent. Here you can identify
     your page and location when you have more than one survey on a webpage (your pagekey may be
     "home-top" and "home-bottom") or when you have the same survey on multiple pages.
@@ -201,7 +201,7 @@ Example: http://example.com/page-with-survey.html#pigeondebug=yxcvbnm (a hash to
 After loading the page, something like the following lines should appear in the console:
 
     foundSurvey 500437
-    embedSurvey 500437, <div id="pigeon-survey-500437" class="pigeon sidebar pigeon-loading" data-pigeon-surveyid="500437" data-pigeon-pagekey="vvk"></div>
+    embedSurvey 500437, <div id="pigeon-survey-500437" class="pigeon sidebar pigeon-loading" data-pigeon-surveyid="survey-vvk" data-pigeon-pagekey="vvk"></div>
     load data
     parse Object {id: 500437, name: "surveyName", questions: Array[4]}
     display PigeonBoolQuestion {id: 500438, title: "first question", text: "Do you like what you see?", answers: Array[2]}
@@ -324,3 +324,8 @@ Setting the Guice Module to load can be done by:
         -Dcom.headissue.pigeon.guice.Module=com.headissue.pigeon.setup.DeveloperSetup
 
 Always use the full qualified classname!
+
+
+#### Updates
+
+* 2013-05-08: The Entity **Survey** has received a new field `key`. If the tables were created with the SQL script `pigeon.1.sql`, you have to update them with `pigeon.alter.1.sql`.

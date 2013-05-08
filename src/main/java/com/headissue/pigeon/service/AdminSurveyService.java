@@ -66,6 +66,7 @@ public class AdminSurveyService {
   public SurveyValue fromSurvey(Survey _survey) {
     SurveyValue s = new SurveyValue();
     s.setName(_survey.getName());
+    s.setKey(_survey.getKey());
     s.setQuestions(new ArrayList<QuestionValue>());
     for (Question q : _survey.getQuestions()) {
       s.getQuestions().add(fromQuestion(q));
@@ -171,5 +172,5 @@ public class AdminSurveyService {
 
   private static final String[] QUESTION_PROPERTIES = {"title", "text", "type"};
 
-  private static final String[] SURVEY_PROPERTIES = {"name"};
+  private static final String[] SURVEY_PROPERTIES = {"name", "key"};
 }

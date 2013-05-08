@@ -76,8 +76,8 @@ public class AdminSurveyResource {
   }
 
   @PUT
-  @Consumes({PigeonMediaType.APPLICATION_JSON})
-  @Produces({PigeonMediaType.APPLICATION_JSON, PigeonMediaType.APPLICATION_JAVASCRIPT})
+  @Consumes({PigeonMediaType.APPLICATION_JSON })
+  @Produces({PigeonMediaType.APPLICATION_JSON, PigeonMediaType.APPLICATION_JAVASCRIPT })
   public Response receiveNewSurvey(
     @Context UriInfo _uriInfo,
     SurveyValue _survey
@@ -106,8 +106,8 @@ public class AdminSurveyResource {
 
   @POST
   @Path("/{surveyId}")
-  @Consumes({PigeonMediaType.APPLICATION_JSON})
-  @Produces({PigeonMediaType.APPLICATION_JSON, PigeonMediaType.APPLICATION_JAVASCRIPT})
+  @Consumes({PigeonMediaType.APPLICATION_JSON })
+  @Produces({PigeonMediaType.APPLICATION_JSON, PigeonMediaType.APPLICATION_JAVASCRIPT })
   public Response receiveSurveyToOverride(
     @PathParam("surveyId") @DefaultValue("0") int _surveyId,
     @Context UriInfo _uriInfo,

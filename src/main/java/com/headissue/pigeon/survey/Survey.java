@@ -36,7 +36,10 @@ import java.util.List;
   @NamedQuery(name = "survey.findSurveyById",
     query = "SELECT s FROM Survey s WHERE s.id = :surveyId"),
   @NamedQuery(name = "survey.allSurveyOverview",
-    query = "SELECT new com.headissue.pigeon.admin.SurveyOverviewValue(s.id, s.name, s.createAt, s.updateAt) FROM Survey s WHERE s.status = :status")
+    query = "SELECT new com.headissue.pigeon.admin.SurveyOverviewValue(s.id, s.name, s.createAt," +
+      "s.updateAt) FROM Survey s WHERE s.status = :status"),
+  @NamedQuery(name = "survey.findSurveyByKey",
+    query = "SELECT s FROM Survey  s WHERE s.key = :surveyKey")
 })
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -47,6 +50,9 @@ public class Survey {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pigeon_sequence")
   @Column(name = "survey_id")
   private int id;
+
+  @Column(name = "survey_key", unique = true)
+  private String key;
 
   @Column(name = "name", nullable = false, columnDefinition = "VARCHAR")
   private String name;
@@ -79,6 +85,14 @@ public class Survey {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public String getKey() {
+    return key;
+  }
+
+  public void setKey(String key) {
+    this.key = key;
   }
 
   public String getName() {

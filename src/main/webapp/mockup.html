@@ -124,7 +124,7 @@
 
 <div id="sidebar-feedback">
     <h2>Your Feedback</h2>
-    <div id="feedback-demo" class="pigeon" data-pigeon-surveyid="1" data-pigeon-pagekey="mockup-page">
+    <div id="feedback-demo" class="pigeon" data-pigeon-surveyid="test" data-pigeon-pagekey="mockup-page">
     </div>
 </div>
 <script>
@@ -156,8 +156,6 @@
         ev.preventDefault();
         var surveyEl = document.getElementById('feedback-demo'),
             newId = $('#change-survey-form input').val();
-        if (isNaN(newId)) return false;
-        newId = parseInt(newId);
         // change survey element
         surveyEl.setAttribute("data-pigeon-surveyid", newId);
         Pigeon.embedSurvey(newId, surveyEl);

@@ -20,9 +20,11 @@ package com.headissue.pigeon.survey;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.headissue.pigeon.util.JPAUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 @Singleton
 public class SurveyHandler {
@@ -40,6 +42,23 @@ public class SurveyHandler {
       return s;
     } catch (Exception e) {
       throw new SurveyException("survey '" + _surveyId + "' is unknown");
+    } finally {
+      _manager.close();
+    }
+  }
+
+  public Survey findSurveyByKey(String _surveyKey) {
+    EntityManager _manager = factory.createEntityManager();
+    try {
+      TypedQuery<Survey> q = _manager.createNamedQuery("survey.findSurveyByKey", Survey.class);
+      q.setParameter("surveyKey", _surveyKey);
+      Survey s = JPAUtils.getSingleResult(q);
+      if (s == null || s.getStatus() == SurveyStatus.DISABLED) {
+        return null;
+      }
+      return s;
+    } catch (Exception e) {
+      throw new SurveyException("survey '" + _surveyKey + "' is unknown");
     } finally {
       _manager.close();
     }

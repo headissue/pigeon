@@ -24,7 +24,8 @@ INSERT INTO pigeon_survey VALUES(100,
   '2012-12-12 14:00:00',
   'VVK',
   'ENABLED',
-  '2012-12-12 14:00:00');
+  '2012-12-12 14:00:00',
+  'test');
 -- Question 1
 INSERT INTO pigeon_question VALUES (101,
   1,

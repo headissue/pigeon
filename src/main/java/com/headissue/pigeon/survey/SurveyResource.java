@@ -23,6 +23,8 @@ import com.google.inject.Inject;
 import com.headissue.pigeon.PigeonMediaType;
 import com.headissue.pigeon.service.ResponseService;
 import com.headissue.pigeon.util.LogUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -50,18 +52,23 @@ public class SurveyResource {
   @GET
   public Response getSurvey(
     @Context UriInfo _uriInfo,
-    @PathParam("surveyId") @DefaultValue("0") int _surveyId) {
-    if (_surveyId <= 0) {
+    @PathParam("surveyId") String _surveyValue) {
+    if (StringUtils.isEmpty(_surveyValue)) {
       return response.bad();
     }
     try {
-      Survey _survey = surveyHandler.findSurveyById(_surveyId);
+      Survey _survey;
+      if (NumberUtils.isNumber(_surveyValue)) {
+        _survey = surveyHandler.findSurveyById(NumberUtils.toInt(_surveyValue));
+      } else {
+        _survey = surveyHandler.findSurveyByKey(_surveyValue);
+      }
       if (_survey == null) {
         response.bad();
       }
       return response.ok(_survey, _uriInfo);
     } catch (Exception e) {
-      LogUtils.warn(log, e, "delivery of survey '%s' failed", _surveyId);
+      LogUtils.warn(log, e, "delivery of survey '%s' failed", _surveyValue);
       return response.bad();
     }
   }

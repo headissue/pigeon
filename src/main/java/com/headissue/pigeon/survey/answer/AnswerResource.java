@@ -24,8 +24,12 @@ import com.headissue.pigeon.service.ResponseService;
 import com.headissue.pigeon.service.Session;
 import com.headissue.pigeon.service.UserMapService;
 import com.headissue.pigeon.service.WebSession;
+import com.headissue.pigeon.survey.Survey;
+import com.headissue.pigeon.survey.SurveyHandler;
 import com.headissue.pigeon.survey.answer.AnswerHandler.AnswerParameter;
 import com.headissue.pigeon.util.LogUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -59,6 +63,9 @@ public class AnswerResource {
   private AnswerHandler answerHandler;
 
   @Inject
+  private SurveyHandler surveyHandler;
+
+  @Inject
   private UserMapService userMapService;
 
   /**
@@ -71,24 +78,33 @@ public class AnswerResource {
   public Response receiveFirstAnswer(
     @Context UriInfo _uriInfo,
     @Context HttpServletRequest request,
-    @PathParam("surveyId") @DefaultValue("0") int _surveyId,
+    @PathParam("surveyId") String _surveyValue,
     UserAnswerValues _answer)
   {
-    if (_surveyId <= 0) {
+    if (StringUtils.isEmpty(_surveyValue)) {
       return response.bad();
     }
     HttpSession _webSession = request.getSession(true);
     Session _session = WebSession.session(_webSession);
     try {
+      Survey _survey;
+      if (NumberUtils.isNumber(_surveyValue)) {
+        _survey = surveyHandler.findSurveyById(NumberUtils.toInt(_surveyValue));
+      } else {
+        _survey = surveyHandler.findSurveyByKey(_surveyValue);
+      }
+      if (_survey == null) {
+        response.bad();
+      }
       AnswerParameter p = new AnswerParameter();
-      p.setSurveyId(_surveyId);
+      p.setSurveyId(_survey.getId());
       p.setMapId(0);
       p.setValues(_answer);
       p.setTimestamp(System.currentTimeMillis());
       answerHandler.receiveAnswer(_session, p);
       return response.ok(new AnswerResponse(userMapService.getUserMapId(_session)), _uriInfo);
     } catch (Exception e) {
-      LogUtils.warn(log, e, "answer request failed (survey '%s')", _surveyId);
+      LogUtils.warn(log, e, "answer request failed (survey '%s')", _surveyValue);
       return response.bad();
     }
   }
@@ -103,11 +119,11 @@ public class AnswerResource {
   public Response receiveOtherAnswer(
     @Context UriInfo _uriInfo,
     @Context HttpServletRequest request,
-    @PathParam("surveyId") @DefaultValue("0") int _surveyId,
+    @PathParam("surveyId") String _surveyValue,
     @PathParam("mapId") @DefaultValue("0") int _mapId,
     UserAnswerValues _answer)
   {
-    if (_surveyId <= 0) {
+    if (StringUtils.isEmpty(_surveyValue)) {
       return response.bad();
     }
     HttpSession _webSession = request.getSession(true);
@@ -117,15 +133,24 @@ public class AnswerResource {
     }
     _mapId = userMapService.getUserMapId(_session);
     try {
+      Survey _survey;
+      if (NumberUtils.isNumber(_surveyValue)) {
+        _survey = surveyHandler.findSurveyById(NumberUtils.toInt(_surveyValue));
+      } else {
+        _survey = surveyHandler.findSurveyByKey(_surveyValue);
+      }
+      if (_survey == null) {
+        response.bad();
+      }
       AnswerParameter p = new AnswerParameter();
-      p.setSurveyId(_surveyId);
+      p.setSurveyId(_survey.getId());
       p.setMapId(_mapId);
       p.setValues(_answer);
       p.setTimestamp(System.currentTimeMillis());
       answerHandler.receiveAnswer(_session, p);
       return response.ok(new AnswerResponse(userMapService.getUserMapId(_session)), _uriInfo);
     } catch (Exception e) {
-      LogUtils.warn(log, e, "bad answer for survey '%s'", _surveyId);
+      LogUtils.warn(log, e, "bad answer for survey '%s'", _surveyValue);
       return response.bad();
     }
   }
