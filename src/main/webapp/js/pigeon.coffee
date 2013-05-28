@@ -205,7 +205,7 @@ class PigeonSurvey
 
   progressBar: ->
     html = "<div class='pigeon-progress' title='#{@currentQuestion+1}/#{@questions.length+1}'>"
-    for num in [0..@questions.length]
+    for num in [0..(@questions.length - 1)]
       classes = ["pigeon-progress-indicator"]
       classes.push "pigeon-progress-done" if num < @currentQuestion
       classes.push "pigeon-progress-current" if num == @currentQuestion

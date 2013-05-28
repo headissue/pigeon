@@ -255,7 +255,7 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
     PigeonSurvey.prototype.progressBar = function() {
       var classes, html, num, _i, _ref;
       html = "<div class='pigeon-progress' title='" + (this.currentQuestion + 1) + "/" + (this.questions.length + 1) + "'>";
-      for (num = _i = 0, _ref = this.questions.length; 0 <= _ref ? _i <= _ref : _i >= _ref; num = 0 <= _ref ? ++_i : --_i) {
+      for (num = _i = 0, _ref = this.questions.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; num = 0 <= _ref ? ++_i : --_i) {
         classes = ["pigeon-progress-indicator"];
         if (num < this.currentQuestion) {
           classes.push("pigeon-progress-done");
