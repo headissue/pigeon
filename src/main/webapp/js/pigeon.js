@@ -231,6 +231,9 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
       Gator(questionEl).on('click', '.pigeon-answer', this.answerClicked);
       Gator(questionEl).on('click', '.pigeon-next', this.nextClicked);
       question.bind(questionEl);
+      if (this.currentQuestion === this.questions.length - 1) {
+        $(questionEl).find('.pigeon-next').html('Antworten absenden');
+      }
       Log.debug("questionEl", questionEl);
       this.element.empty();
       this.element.append(this.progressBar());

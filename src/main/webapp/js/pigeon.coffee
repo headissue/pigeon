@@ -181,6 +181,8 @@ class PigeonSurvey
     Gator(questionEl).on 'click', '.pigeon-answer', @answerClicked
     Gator(questionEl).on 'click', '.pigeon-next', @nextClicked
     question.bind questionEl
+    if @currentQuestion == @questions.length - 1
+      $(questionEl).find('.pigeon-next').html('Antworten absenden')
     Log.debug "questionEl", questionEl
     @element.empty()
     @element.append @progressBar()
