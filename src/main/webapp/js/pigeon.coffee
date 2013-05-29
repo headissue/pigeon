@@ -389,7 +389,7 @@ class PigeonFreeQuestion extends PigeonQuestion
   toHTML: ->
     html = "<input type='text' name='pigeon-answer-#{@id}' class='pigeon-answer' value='' />"
     # Freeform-Questions need a submit button so the user can access the next question
-    html += "<button name='pigeon-next-#{@id}' class='pigeon-next'>Weiter</button>"
+    html += "<div class='pigeon-next-wrapper'><button name='pigeon-next-#{@id}' class='pigeon-next'>Weiter</button></div>"
     @wrapHTML html
 
 class PigeonBoolQuestion extends PigeonQuestion
@@ -430,7 +430,7 @@ class PigeonMultipleQuestion extends PigeonQuestion
         #{answer.text}
         </label>"
     # Multiple Checkbox Questions need a submit button so the user can access the next question
-    html += "<button name='pigeon-next-#{@id}' class='pigeon-next'>Weiter</button>"
+    html += "<div class='pigeon-next-wrapper'><button name='pigeon-next-#{@id}' class='pigeon-next'>Weiter</button></div>"
     @wrapHTML html
 
 class PigeonMultipleFreeQuestion extends PigeonQuestion
@@ -450,7 +450,7 @@ class PigeonMultipleFreeQuestion extends PigeonQuestion
           <input type='text' id='pigeon-answer-#{@id}-#{answer.id}-free' class='pigeon-answer' name='pigeon-answer-#{@id}-free' value=''/>
           </div>"
     # Multiple Checkbox + Freetext Questions need a submit button so the user can access the next question
-    html += "<button name='pigeon-next-#{@id}' class='pigeon-next'>Weiter</button>"
+    html += "<div class='pigeon-next-wrapper'><button name='pigeon-next-#{@id}' class='pigeon-next'>Weiter</button></div>"
     @wrapHTML html
 
   checkedValue: (event) ->

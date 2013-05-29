@@ -471,7 +471,7 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
     PigeonFreeQuestion.prototype.toHTML = function() {
       var html;
       html = "<input type='text' name='pigeon-answer-" + this.id + "' class='pigeon-answer' value='' />";
-      html += "<button name='pigeon-next-" + this.id + "' class='pigeon-next'>Weiter</button>";
+      html += "<div class='pigeon-next-wrapper'><button name='pigeon-next-" + this.id + "' class='pigeon-next'>Weiter</button></div>";
       return this.wrapHTML(html);
     };
 
@@ -553,7 +553,7 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
         answer = _ref[_i];
         html += "<label for='pigeon-answer-" + this.id + "-" + answer.id + "'>        <input type='checkbox' id='pigeon-answer-" + this.id + "-" + answer.id + "' class='pigeon-answer' name='pigeon-answer-" + this.id + "' value='" + answer.id + "' />        " + answer.text + "        </label>";
       }
-      html += "<button name='pigeon-next-" + this.id + "' class='pigeon-next'>Weiter</button>";
+      html += "<div class='pigeon-next-wrapper'><button name='pigeon-next-" + this.id + "' class='pigeon-next'>Weiter</button></div>";
       return this.wrapHTML(html);
     };
 
@@ -585,7 +585,7 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
           html += "<div class='pigeon-answers-free'>          <input type='text' id='pigeon-answer-" + this.id + "-" + answer.id + "-free' class='pigeon-answer' name='pigeon-answer-" + this.id + "-free' value=''/>          </div>";
         }
       }
-      html += "<button name='pigeon-next-" + this.id + "' class='pigeon-next'>Weiter</button>";
+      html += "<div class='pigeon-next-wrapper'><button name='pigeon-next-" + this.id + "' class='pigeon-next'>Weiter</button></div>";
       return this.wrapHTML(html);
     };
 
