@@ -326,6 +326,10 @@ Setting the Guice Module to load can be done by:
 Always use the full qualified classname!
 
 
+#### Roadmap
+
+* Individual thanks message at the end of the survey
+
 #### Updates
 
 * 2013-05-08: The Entity **Survey** has received a new field `key`. If the tables were created with the SQL script `pigeon.1.sql`, you have to update them with `pigeon.alter.1.sql`.
