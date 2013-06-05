@@ -252,7 +252,7 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
 
     PigeonSurvey.prototype.displayThanks = function() {
       this.element.addClass("pigeon-done");
-      return this.element.html("<div class='pigeon-thanks'>\n  <p>Vielen Dank für dein Feedback!</p>\n</div>");
+      return this.element.html("<div class='pigeon-thanks'>\n  <p>Vielen Dank für Ihr Feedback!</p>\n</div>");
     };
 
     PigeonSurvey.prototype.progressBar = function() {

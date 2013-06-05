@@ -201,7 +201,7 @@ class PigeonSurvey
     @element.addClass("pigeon-done")
     @element.html """
                   <div class='pigeon-thanks'>
-                    <p>Vielen Dank für dein Feedback!</p>
+                    <p>Vielen Dank für Ihr Feedback!</p>
                   </div>
                   """
 
