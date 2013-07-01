@@ -296,17 +296,14 @@ var e,n=0,k=0,b={},j={};g.prototype.on=function(a,c,b){return s.call(this,a,c,b)
       _self = this;
       lastAnswerEl = null;
       wrapper.find('.pigeon-answer').each(function() {
-        var answerEl, value;
+        var answerEl;
+        Log.debug("wrapper.find:", this, question, this["type"], question.type);
         answerEl = this;
         if ((question.type !== 'multiple' && question.type !== "multiplefree") || answerEl["checked"]) {
           _self.answers[questionId].push(answerEl.value);
         }
-        if (question.type === "multiplefree" && answerEl["type"] === "text") {
-          value = "";
-          if (lastAnswerEl !== null && lastAnswerEl["checked"] === true) {
-            value = lastAnswerEl.value;
-          }
-          _self.answers[questionId].push(value);
+        if (question.type === "multiplefree" && answerEl["type"] === "text" && lastAnswerEl !== null && lastAnswerEl["checked"] === true) {
+          _self.answers[questionId].push(answerEl.value);
         }
         return lastAnswerEl = answerEl;
       });

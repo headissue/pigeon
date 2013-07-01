@@ -239,14 +239,14 @@ class PigeonSurvey
     _self = this
     lastAnswerEl = null
     wrapper.find('.pigeon-answer').each -> # thin arrow, we need the `this`
+      Log.debug "wrapper.find:", this, question, this["type"], question.type
       # parameters are unuseable, zepto&jquery have el, id - but ender uses id, el. aaargh!
       answerEl = this
       if (question.type != 'multiple' && question.type != "multiplefree") || answerEl["checked"]
         _self.answers[questionId].push answerEl.value # contains answerId or user-entered-text
-      if question.type == "multiplefree" && answerEl["type"] == "text"
-        value = ""
-        value = lastAnswerEl.value if lastAnswerEl != null && lastAnswerEl["checked"] == true # set answer-text only if checkbox is checked
-        _self.answers[questionId].push value # contains user-entered-text
+      if question.type == "multiplefree" && answerEl["type"] == "text" && lastAnswerEl != null && lastAnswerEl["checked"] == true
+        # set answer-text only if checkbox is checked
+        _self.answers[questionId].push answerEl.value # contains user-entered-text
       lastAnswerEl = answerEl
 
     # send
