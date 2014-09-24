@@ -48,7 +48,7 @@
 
   <!-- SECURITY ROLES -->
   <security-role>
-    <role-name>pigeonk-admin</role-name>
+    <role-name>pigeon-admin</role-name>
   </security-role>
 
   <!-- SECURITY CONSTRAINTS -->
