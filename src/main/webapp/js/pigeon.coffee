@@ -201,7 +201,7 @@ class PigeonSurvey
     @element.addClass("pigeon-done")
     @element.html """
                   <div class='pigeon-thanks'>
-                    <p>Vielen Dank für Ihr Feedback!</p>
+                    <p>Vielen Dank f&uuml;r Ihr Feedback!</p>
                   </div>
                   """
 
@@ -338,7 +338,7 @@ class PigeonSurvey
     @element.addClass("pigeon-fail")
     @element.html """
                   <div class='pigeon-error'>
-                    <p>Danke für dein Feedback, aber unser Server konnte es wegen eines internen Fehlers leider nicht annehmen.</p>
+                    <p>Danke f&uuml;r Ihr Feedback, aber unser Server konnte es wegen eines internen Fehlers leider nicht annehmen.</p>
                   </div>
                   """
 
