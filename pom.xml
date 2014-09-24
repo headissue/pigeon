@@ -12,15 +12,14 @@
   ~ GNU Affero General Public License for more details.
   ~
   ~ You should have received a copy of the GNU Affero General Public License
-  ~ along with this patch.  If not, see <http://www.gnu.org/licenses/agpl.txt/>.
+  ~ along with this patch.  If not, see <http://www.gnu.org/licenses/agpl.txt />.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>headissue-pigeon</groupId>
   <artifactId>headissue-pigeon</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.5</version>
   <name>headissue-pigeon simple feedback tool</name>
   <url>http://www.headissue.com</url>
   <description>
@@ -32,6 +31,7 @@
     <connection>scm:git:git@github.com:headissue/pigeon.git</connection>
     <developerConnection>scm:git:git@github.com:headissue/pigeon.git</developerConnection>
     <url>https://github.com/headissue/pigeon</url>
+    <tag>v0.5</tag>
   </scm>
 
   <properties>
